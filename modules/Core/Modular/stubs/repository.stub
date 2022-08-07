@@ -1,0 +1,20 @@
+<?php
+
+namespace Modules\{{LAYOUT_NAME}}\Repositories;
+
+use Modules\Core\Http\Repositories\BaseRepository;
+use Modules\{{LAYOUT_NAME}}\Models\{{MODULE_NAME}}Model;
+
+/**
+ * {{MODULE_NAME}} Repository
+ *
+ * created at {{DATE_CREATE}}
+ * @author ...
+ */
+class {{MODULE_NAME}}Repository extends BaseRepository
+{
+    public function model()
+    {
+        return {{MODULE_NAME}}Model::class;
+    }
+}

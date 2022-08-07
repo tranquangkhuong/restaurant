@@ -1,0 +1,28 @@
+<?php
+
+namespace Modules\{{LAYOUT_NAME}}\Resources;
+
+use Illuminate\Http\Resources\Json\JsonResource;
+
+/**
+ * {{MODULE_NAME}} Resource
+ *
+ * created at {{DATE_CREATE}}
+ * @author ...
+ */
+class {{MODULE_NAME}}Resource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request
+     *
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return [
+            'id' => $this->id,
+        ];
+    }
+}

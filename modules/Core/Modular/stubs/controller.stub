@@ -1,0 +1,97 @@
+<?php
+
+namespace Modules\{{LAYOUT_NAME}}\Controllers;
+
+use Illuminate\Support\Facades\Request;
+use Modules\Core\Http\Controllers\ApiController;
+use Modules\{{LAYOUT_NAME}}\Resources\{{MODULE_NAME}}Resource;
+use Modules\{{LAYOUT_NAME}}\Services\{{MODULE_NAME}}Service;
+
+/**
+ * {{MODULE_NAME}} Controller
+ *
+ * created at {{DATE_CREATE}}
+ * @author ...
+ */
+class {{MODULE_NAME}}Controller extends ApiController
+{
+    protected ${{MODULE_NAME_LOWER}}Service;
+
+    public function __construct(
+        {{MODULE_NAME}}Service ${{MODULE_NAME_LOWER}}Service
+    ) {
+        $this->{{MODULE_NAME_LOWER}}Service = ${{MODULE_NAME_LOWER}}Service;
+    }
+
+    /**
+     * Dữ liệu màn hình index
+     *
+     * @param Object $request Request từ Client
+     * @return JSON $return Dữ liệu
+     */
+    public function index(Request $request)
+    {
+        $input = $request->all();
+        $items = $this->{{MODULE_NAME_LOWER}}Service->filter($input);
+        $result = {{MODULE_NAME}}Resource::collection($items);
+
+        return $this->response($result);
+    }
+
+    /**
+     * Thông tin một bản ghi cụ thể
+     *
+     * @param String $id Id của bản ghi
+     * @return JSON $return Thông tin chi tiết
+     */
+    public function show($id)
+    {
+        $item = $this->{{MODULE_NAME_LOWER}}Service->find($id);
+        $result = {{MODULE_NAME}}Resource::collection($item);
+
+        return $this->response($result);
+    }
+
+    /**
+     * Thêm bản ghi
+     *
+     * @param Object $request Dữ liệu từ Client
+     * @return JSON $return Trạng thái kết quả thêm bản ghi
+     */
+    public function store(Request $request)
+    {
+        $input = $request->all();
+        $result = $this->{{MODULE_NAME_LOWER}}Service->create($input);
+
+        return $this->response($result);
+    }
+
+    /**
+     * Cập nhật bản ghi
+     *
+     * @param Object $request Dữ liệu từ Client
+     * @param String $id Id của bản ghi cập nhật
+     * @return JSON Trạng thái kết quả cập nhật
+     */
+    public function update(Request $request, $id)
+    {
+        $input = $request->all();
+        $item = $this->{{MODULE_NAME_LOWER}}Service->find($id);
+        $result = $this->{{MODULE_NAME_LOWER}}Service->update($item, $input);
+
+        return $this->response($result);
+    }
+
+    /**
+     * Xóa bản ghi
+     *
+     * @param String $id Id bản ghi cần xóa
+     */
+    public function destroy($id)
+    {
+        $item = $this->{{MODULE_NAME_LOWER}}Service->find($id);
+        $result = $this->{{MODULE_NAME_LOWER}}Service->delete($item);
+
+        return $this->response($result);
+    }
+}

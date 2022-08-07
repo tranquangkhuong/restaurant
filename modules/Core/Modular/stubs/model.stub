@@ -1,0 +1,35 @@
+<?php
+
+namespace Modules\{{LAYOUT_NAME}}\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * {{MODULE_NAME}} Model
+ *
+ * created at {{DATE_CREATE}}
+ * @author ...
+ */
+class {{MODULE_NAME}}Model extends Model
+{
+    protected $table = '';
+    protected $keyType = 'string';
+    public $incrementing = false;
+    protected $fillable = [
+        'id',
+    ];
+    public $sortable = [
+        'updated_at',
+        'created_at',
+    ];
+
+    public function filter($query, $param, $value)
+    {
+        switch ($param) {
+            case 'id':
+                if ($value != '') return $query->where("id", $value);
+            default:
+                return $query;
+        }
+    }
+}

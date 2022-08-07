@@ -1,0 +1,25 @@
+<?php
+
+namespace Modules\{{LAYOUT_NAME}}\Services;
+
+use Modules\Core\Http\Services\BaseService;
+use Modules\{{LAYOUT_NAME}}\Repositories\{{MODULE_NAME}}Repository;
+
+/**
+ * {{MODULE_NAME}} Service
+ *
+ * created at {{DATE_CREATE}}
+ * @author ...
+ */
+class {{MODULE_NAME}}Service extends BaseService
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function repository()
+    {
+        return {{MODULE_NAME}}Repository::class;
+    }
+}
